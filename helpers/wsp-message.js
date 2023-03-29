@@ -79,7 +79,12 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
         data = msgTypeText(phoneNumber, text)
 
     } else if (['dispatch-address'].includes(followUp)) {
-        text = `Ingresa direccion wom`
+        followUp = 'quantity-requested'
+        text = `Ahora indicanos la dirección de despacho`
+        data = msgTypeText(phoneNumber, text)
+
+    } else if (['quantity-requested'].includes(followUp)) {
+        text = `Perfecto, ahora ingresa la cantidad solicitada`
         data = msgTypeText(phoneNumber, text)
 
     } else {
