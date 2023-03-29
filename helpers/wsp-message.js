@@ -84,7 +84,38 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
         data = msgTypeText(phoneNumber, text)
 
     } else if (['quantity-requested'].includes(followUp)) {
+        followUp = 'dispatch-date'
         text = `Perfecto, ahora ingresa la cantidad solicitada`
+        data = msgTypeText(phoneNumber, text)
+    
+    } else if (['dispatch-date'].includes(followUp)) {
+        followUp = 'payment-conditions'
+        text = `Por favor ingresa fecha de despacho requerida`
+        data = msgTypeText(phoneNumber, text)
+
+    } else if (['payment-conditions'].includes(followUp)) {
+        followUp = 'due-date'
+        text = `Ingresa las condiciones de pago`
+        data = msgTypeText(phoneNumber, text)
+
+    } else if (['due-date'].includes(followUp)) {
+        followUp = 'contact-details'
+        text = `Ingresa la fecha de vencimiento`
+        data = msgTypeText(phoneNumber, text)
+
+    } else if (['contact-details'].includes(followUp)) {
+        followUp = 'venta-cotizacion'
+        text = `Ingresa los datos de contacto de quie realiza la solicitud`
+        data = msgTypeText(phoneNumber, text)
+
+    } else if (['venta-cotizacion'].includes(followUp)) {
+        followUp = 'follow-end'
+        text = `Indicanos si es venta o cotizacion`
+        data = msgTypeText(phoneNumber, text)
+
+    } else if (['follow-end'].includes(followUp)) {
+        followUp = ''
+        text = `Gracias, cambio y fuera... Adiós...`
         data = msgTypeText(phoneNumber, text)
 
     } else {
