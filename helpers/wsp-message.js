@@ -64,6 +64,7 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
     let data
 
     if (['hi', 'hello', 'holi', 'hola', 'holiwis'].includes(textMessage.toLowerCase())) {
+        followUp = ''
         text = `¡Hola! Bienvenid@ a Coagra Whatsapp.\n\nPara comenzar, por favor selecciona una opcion de registro`
         data = msgTypeButtons(phoneNumber, text, buttonsRazonRut())
 
