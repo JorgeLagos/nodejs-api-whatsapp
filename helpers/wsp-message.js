@@ -11,10 +11,8 @@ const {
 } = require('./wsp-template')
 
 
-const {
-    buttonsRazonRut
-} = require('./wsp-buttons')
-
+const { buttonsRazonRut } = require('./wsp-buttons')
+const { listVentaCotizacion } = require('./wsp-lists')
 
 const { sendApiMessageWhatsapp } = require('../services/whatsapp')
 
@@ -65,17 +63,17 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
 
     if (['hi', 'hello', 'holi', 'hola', 'holiwis'].includes(textMessage.toLowerCase())) {
         followUp = ''
-        text = `¡Hola! Bienvenid@ a Coagra Whatsapp.\n\nPara comenzar, por favor selecciona una opcion de registro`
+        text = `¡Hola! Bienvenid@ a Coagra Whatsapp.\n\nPara comenzar, por favor selecciona una opcion de registro ✅`
         data = msgTypeButtons(phoneNumber, text, buttonsRazonRut())
 
     } else if (['razon social'].includes(textMessage.toLowerCase())) {
         followUp = 'dispatch-address'
-        text = `Perfecto, indicanos tu Razon Social`
+        text = `Perfecto 👍,\n\nIndicanos tu Razon Social`
         data = msgTypeText(phoneNumber, text)
 
     } else if (['rut'].includes(textMessage.toLowerCase())) {
         followUp = 'dispatch-address'
-        text = `Perfecto, indicanos tu R.U.T`
+        text = `Perfecto 👍,\n\nIndicanos tu R.U.T`
         data = msgTypeText(phoneNumber, text)
 
     } else if (['dispatch-address'].includes(followUp)) {
@@ -85,41 +83,54 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
 
     } else if (['quantity-requested'].includes(followUp)) {
         followUp = 'dispatch-date'
-        text = `Perfecto, ahora ingresa la cantidad solicitada`
+        text = `Perfecto,\n\nAhora ingresa la cantidad solicitada`
         data = msgTypeText(phoneNumber, text)
-    
+
     } else if (['dispatch-date'].includes(followUp)) {
         followUp = 'payment-conditions'
         text = `Por favor ingresa fecha de despacho requerida`
         data = msgTypeText(phoneNumber, text)
+
+
+
 
     } else if (['payment-conditions'].includes(followUp)) {
         followUp = 'due-date'
         text = `Ingresa las condiciones de pago`
         data = msgTypeText(phoneNumber, text)
 
+
+
     } else if (['due-date'].includes(followUp)) {
         followUp = 'contact-details'
         text = `Ingresa la fecha de vencimiento`
         data = msgTypeText(phoneNumber, text)
 
+
+
+
     } else if (['contact-details'].includes(followUp)) {
         followUp = 'venta-cotizacion'
-        text = `Ingresa los datos de contacto de quie realiza la solicitud`
+        text = `Ingresa los datos de contacto de quién realiza la solicitud`
         data = msgTypeText(phoneNumber, text)
+
+
+
 
     } else if (['venta-cotizacion'].includes(followUp)) {
         followUp = 'follow-end'
-        text = `Indicanos si es venta o cotizacion`
-        data = msgTypeText(phoneNumber, text)
+        text = `Indícanos la opción de facturación ✅`
+        data = msgTypeList(phoneNumber, text, listVentaCotizacion())
+
+
 
     } else if (['follow-end'].includes(followUp)) {
         followUp = ''
-        text = `Gracias, cambio y fuera... Adiós...`
+        text = `Gracias, Adiós... Cambio y fuera`
         data = msgTypeText(phoneNumber, text)
 
     } else {
-        data = msgTypeText(phoneNumber, 'No te entiendo')
+        data = msgTypeText(phoneNumber, 'No te entiendo ninguna wea, tei un hablamiento como el loli')
     }
     console.log(followUp)
     sendApiMessageWhatsapp(data)

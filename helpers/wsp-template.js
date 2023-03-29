@@ -121,7 +121,7 @@ const msgTypeButtons = (phoneNumber, text, buttons) => {
     })
 }
 
-const msgTypeList = (phoneNumber) => {
+const msgTypeList = (phoneNumber, text, sections) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "recipient_type": "individual",
@@ -130,45 +130,14 @@ const msgTypeList = (phoneNumber) => {
         "interactive": {
             "type": "list",
             "body": {
-                "text": "✅ I have these options"
+                "text": text
             },
-            "footer": {
-                "text": "Select an option"
-            },
+            // "footer": {
+            //     "text": "Select an option"
+            // },
             "action": {
                 "button": "See options",
-                "sections": [
-                    {
-                        "title": "Buy and sell products",
-                        "rows": [
-                            {
-                                "id": "main-buy",
-                                "title": "Buy",
-                                "description": "Buy the best product your home"
-                            },
-                            {
-                                "id": "main-sell",
-                                "title": "Sell",
-                                "description": "Sell your products"
-                            }
-                        ]
-                    },
-                    {
-                        "title": "📍center of attention",
-                        "rows": [
-                            {
-                                "id": "main-agency",
-                                "title": "Agency",
-                                "description": "Your can visit our agency"
-                            },
-                            {
-                                "id": "main-contact",
-                                "title": "Contact center",
-                                "description": "One of our agents will assist you"
-                            }
-                        ]
-                    }
-                ]
+                "sections": sections
             }
         }
     })
