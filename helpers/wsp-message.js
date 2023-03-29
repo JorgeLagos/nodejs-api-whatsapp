@@ -96,14 +96,14 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
 
     } else if (['payment-conditions'].includes(followUp)) {
         followUp = 'due-date'
-        text = `Ingresa las condiciones de pago`
+        text = `Ingresa las condiciones de pago 💰`
         data = msgTypeText(phoneNumber, text)
 
 
 
     } else if (['due-date'].includes(followUp)) {
         followUp = 'contact-details'
-        text = `Ingresa la fecha de vencimiento`
+        text = `Ingresa la fecha de vencimiento 🗓️\nCon el formato dd-mm-yyyy`
         data = msgTypeText(phoneNumber, text)
 
 
@@ -124,7 +124,7 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
 
     } else if (['follow-end'].includes(followUp)) {
         followUp = 'follow-end'
-        text = `Gracias, Adiós... Cambio y fuera\n\n👋👋`
+        text = `Gracias, Adiós... Cambio y fuera\n👋👋`
         data = msgTypeText(phoneNumber, text)
 
     } else {
