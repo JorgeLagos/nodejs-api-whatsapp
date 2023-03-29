@@ -78,7 +78,7 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
 
     } else if (['dispatch-address'].includes(followUp)) {
         followUp = 'quantity-requested'
-        text = `Ahora indicanos la dirección de despacho`
+        text = `Ahora indicanos la dirección de despacho 🌎`
         data = msgTypeText(phoneNumber, text)
 
     } else if (['quantity-requested'].includes(followUp)) {
@@ -88,7 +88,7 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
 
     } else if (['dispatch-date'].includes(followUp)) {
         followUp = 'payment-conditions'
-        text = `Por favor ingresa fecha de despacho requerida`
+        text = `Por favor ingresa fecha de despacho requerida 🗓️\nCon el formato dd-mm-yyyy`
         data = msgTypeText(phoneNumber, text)
 
 
@@ -122,11 +122,9 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
         text = `Indícanos la opción de facturación ✅`
         data = msgTypeList(phoneNumber, text, listVentaCotizacion())
 
-
-
     } else if (['follow-end'].includes(followUp)) {
-        followUp = ''
-        text = `Gracias, Adiós... Cambio y fuera`
+        followUp = 'follow-end'
+        text = `Gracias, Adiós... Cambio y fuera\n\n👋👋`
         data = msgTypeText(phoneNumber, text)
 
     } else {
