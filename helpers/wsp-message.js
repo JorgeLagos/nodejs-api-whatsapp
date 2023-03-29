@@ -68,12 +68,12 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
 
     } else if (['razon social'].includes(textMessage.toLowerCase())) {
         followUp = 'dispatch-address'
-        text = `Perfecto 👍,\n\nIndicanos tu Razon Social`
+        text = `Perfecto 👍,\nIndicanos tu Razon Social`
         data = msgTypeText(phoneNumber, text)
 
     } else if (['rut'].includes(textMessage.toLowerCase())) {
         followUp = 'dispatch-address'
-        text = `Perfecto 👍,\n\nIndicanos tu R.U.T`
+        text = `Perfecto 👍,\nIndicanos tu R.U.T`
         data = msgTypeText(phoneNumber, text)
 
     } else if (['dispatch-address'].includes(followUp)) {
@@ -83,7 +83,7 @@ const sendProcessMessage = (phoneNumber, textMessage) => {
 
     } else if (['quantity-requested'].includes(followUp)) {
         followUp = 'dispatch-date'
-        text = `Perfecto,\n\nAhora ingresa la cantidad solicitada`
+        text = `Perfecto 👍,\nAhora ingresa la cantidad solicitada`
         data = msgTypeText(phoneNumber, text)
 
     } else if (['dispatch-date'].includes(followUp)) {

@@ -136,7 +136,7 @@ const msgTypeList = (phoneNumber, text, sections) => {
             //     "text": "Select an option"
             // },
             "action": {
-                "button": "See options",
+                "button": "Ver opciones",
                 "sections": sections
             }
         }
