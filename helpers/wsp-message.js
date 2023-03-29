@@ -54,9 +54,14 @@ const sendSimpleMessage = (phoneNumber, textMessage) => {
 }
 
 const sendProcessMessage = (phoneNumber, textMessage) => {
+    console.log(textMessage.toLowerCase())
     let data
-    if (['hi', 'hello', 'holi', 'hola', 'holiwis'].includes(textMessage)) {
-        data = msgTypeButtons(phoneNumber)
+    if (['hi', 'hello', 'holi', 'hola', 'holiwis'].includes(textMessage.toLowerCase())) {
+        data = msgTypeButtons(phoneNumber, '¡Hola! Bienvenid@ a Coagra Whatsapp.\n\nPara comenzar, por favor selecciona una opcion de registro')
+    
+    } else if (['razon social'].includes(textMessage.toLowerCase())) {
+        console.log(textMessage)
+
     } else {
         data = msgTypeText(phoneNumber, 'No te entiendo')
     }

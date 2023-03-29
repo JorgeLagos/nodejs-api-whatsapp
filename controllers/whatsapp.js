@@ -43,7 +43,6 @@ const postWhatsapp = (req=request, res=response) => {
         
 
         // Send message
-        // sendSimpleMessage(phoneNumber, textMessage)
         sendProcessMessage(phoneNumber, textMessage)
 
         res.status(200).send('TRY - EVENT_RECEIVED')
