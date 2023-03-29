@@ -87,7 +87,7 @@ const msgTypeLocation = (phoneNumber) => {
     })
 }
 
-const msgTypeButtons = (phoneNumber, text) => {
+const msgTypeButtons = (phoneNumber, text, buttons) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "recipient_type": "individual",
@@ -99,22 +99,23 @@ const msgTypeButtons = (phoneNumber, text) => {
                 "text": text
             },
             "action": {
-                "buttons": [
-                    {
-                        "type": "reply",
-                        "reply": {
-                            "id": "btn_001",
-                            "title": "Razon Social"
-                        }
-                    },
-                    {
-                        "type": "reply",
-                        "reply": {
-                            "id": "btn_002",
-                            "title": "RUT"
-                        }
-                    }
-                ]
+                "buttons": buttons
+                // "buttons": [
+                //     {
+                //         "type": "reply",
+                //         "reply": {
+                //             "id": "btn_001",
+                //             "title": "Razon Social"
+                //         }
+                //     },
+                //     {
+                //         "type": "reply",
+                //         "reply": {
+                //             "id": "btn_002",
+                //             "title": "RUT"
+                //         }
+                //     }
+                // ]
             }
         }
     })

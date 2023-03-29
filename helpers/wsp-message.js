@@ -10,6 +10,12 @@ const {
     msgTypeList
 } = require('./wsp-template')
 
+
+const {
+    buttonsRazonRut
+} = require('./wsp-buttons')
+
+
 const { sendApiMessageWhatsapp } = require('../services/whatsapp')
 
 const getTextMessage = (message) => {
@@ -56,11 +62,21 @@ const sendSimpleMessage = (phoneNumber, textMessage) => {
 const sendProcessMessage = (phoneNumber, textMessage) => {
     console.log(textMessage.toLowerCase())
     let data
+    let volver
+
+    console.log(volver)
+
     if (['hi', 'hello', 'holi', 'hola', 'holiwis'].includes(textMessage.toLowerCase())) {
-        data = msgTypeButtons(phoneNumber, '¡Hola! Bienvenid@ a Coagra Whatsapp.\n\nPara comenzar, por favor selecciona una opcion de registro')
-    
+        text = `¡Hola! Bienvenid@ a Coagra Whatsapp.\n\nPara comenzar, por favor selecciona una opcion de registro`
+        data = msgTypeButtons(phoneNumber, text, buttonsRazonRut())
+
     } else if (['razon social'].includes(textMessage.toLowerCase())) {
-        console.log(textMessage)
+        text = `Perfecto, indicanos tu Razon Social`
+        data = msgTypeText(phoneNumber, text)
+
+    } else if (['rut'].includes(textMessage.toLowerCase())) {
+        text = `Perfecto, indicanos tu R.U.T`
+        data = msgTypeText(phoneNumber, text)
 
     } else {
         data = msgTypeText(phoneNumber, 'No te entiendo')
